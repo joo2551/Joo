@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منصتي التعليمية</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f5fa;--card:#fff;--ink:#1b2340;--mut:#6b7494;--line:#e3e6f0;--ac:#4f46e5;--ac2:#eef0ff;--ok:#12a36b;--okb:#e5f8f0;--no:#e5484d;--nob:#fdecec;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1220;--card:#181c30;--ink:#eef0ff;--mut:#9aa3c7;--line:#2a2f4a;--ac:#818cf8;--ac2:#232850;--okb:#10281f;--nob:#2c1618}}
+:root[data-theme="dark"]{--bg:#0f1220;--card:#181c30;--ink:#eef0ff;--mut:#9aa3c7;--line:#2a2f4a;--ac:#818cf8;--ac2:#232850;--okb:#10281f;--nob:#2c1618}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 "IBM Plex Sans Arabic",Tahoma,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 80px}
+header.top{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.logo{width:44px;height:44px;border-radius:14px;background:var(--ac);color:#fff;display:grid;place-items:center}
+h1{font-size:24px;margin:0;font-weight:700}h2{font-size:20px;margin:0 0 4px}
+.sub{color:var(--mut);font-size:14px;margin:0}
+.ic{width:20px;height:20px;flex:none}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:500;padding:9px 16px;border-radius:12px;cursor:pointer}
+.btn:hover{border-color:var(--ac)}.btn:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.btn.p{background:var(--ac);border-color:var(--ac);color:#fff}.btn.d{color:var(--no)}.btn.s{padding:6px 10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.sp{flex:1}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}
+.empty{text-align:center;padding:48px 16px;border:2px dashed var(--line);border-radius:22px;color:var(--mut)}
+.empty .logo{margin:0 auto 14px;width:64px;height:64px;border-radius:20px;background:var(--ac2);color:var(--ac)}
+.empty .ic{width:30px;height:30px}.empty h2{color:var(--ink)}
+input[type=text],textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+textarea{resize:vertical;min-height:70px}
+.q-h{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.num{width:30px;height:30px;border-radius:10px;background:var(--ac2);color:var(--ac);display:grid;place-items:center;font-weight:700;flex:none}
+.ch{display:flex;align-items:center;gap:10px;margin-top:8px}
+.ch input[type=radio]{width:20px;height:20px;accent-color:var(--ok);flex:none}
+.lbl{font-size:13px;color:var(--mut);margin:12px 0 4px;display:block}
+.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:right;font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:8px;cursor:pointer}
+.opt.sel{border-color:var(--ac);background:var(--ac2)}
+.opt.ok{border-color:var(--ok);background:var(--okb)}.opt.no{border-color:var(--no);background:var(--nob)}
+.opt .dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--mut);flex:none;display:grid;place-items:center}
+.opt.sel .dot{border-color:var(--ac);background:var(--ac);color:#fff}
+.opt.ok .dot{border-color:var(--ok);background:var(--ok);color:#fff}.opt.no .dot{border-color:var(--no);background:var(--no);color:#fff}
+.opt .ic{width:14px;height:14px}
+.expl{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--ac2);font-size:15px}
+.expl b{color:var(--ac)}
+.score{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ring{width:120px;height:120px;position:relative;flex:none}
+.ring span{position:absolute;inset:0;display:grid;place-items:center;font-size:26px;font-weight:700}
+.bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin:10px 0 18px}.bar i{display:block;height:100%;background:var(--ac)}
+.bd{position:fixed;inset:0;background:rgba(10,14,30,.55);display:grid;place-items:center;padding:16px;z-index:20}
+.md{background:var(--card);border-radius:20px;padding:20px;max-width:560px;width:100%;max-height:88vh;overflow:auto}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:12px;z-index:30;font-size:15px}
+.tag{font-size:13px;color:var(--mut);display:inline-flex;gap:6px;align-items:center}
+.tabs{display:flex;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px;margin-bottom:16px}.tabs button{flex:1;display:flex;justify-content:center;align-items:center;gap:8px;border:0;background:none;color:var(--mut);font:inherit;font-weight:600;padding:9px;border-radius:10px;cursor:pointer}.tabs .on{background:var(--ac);color:#fff}
+.vid{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000}.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}a.btn{text-decoration:none}.cr{text-align:center;color:var(--mut);font-size:13px;padding:0 16px 32px}
+@media (prefers-reduced-motion:no-preference){.opt,.btn{transition:border-color .15s,background .15s}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<footer class="cr">© Youssef KH – جميع الحقوق محفوظة</footer>
+<script>
+const P={plus:'<path d="M12 5v14M5 12h14"/>',up:'<path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>',down:'<path d="M12 4v12M7 11l5 5 5-5M4 20h16"/>',trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',edit:'<path d="M4 20h4L19 9l-4-4L4 16v4zM13 7l4 4"/>',play:'<path d="M7 4l13 8-13 8z"/>',check:'<path d="M5 12l5 5 9-10"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',back:'<path d="M9 5l7 7-7 7"/>',book:'<path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2V5zM4 19a2 2 0 012-2h13"/>',copy:'<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/>'};
+const ic=n=>`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,10);
+const $=document.getElementById('app');
+let exams=[],lectures=[],tab='lec',W=null,view='home',D=null,S=null;
+try{exams=JSON.parse(localStorage.getItem('exams-v1')||'[]');if(!Array.isArray(exams))exams=[]}catch(e){exams=[]}
+const persist=()=>{try{localStorage.setItem('exams-v1',JSON.stringify(exams));localStorage.setItem('lectures-v1',JSON.stringify(lectures))}catch(e){}};
+function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2600)}
+const head=(t,s,back)=>`<header class="top">${back?`<button class="btn s" onclick="go('home')" aria-label="رجوع">${ic('back')}</button>`:`<div class="logo">${ic('book')}</div>`}<div><h1>${t}</h1>${s?`<p class="sub">${s}</p>`:''}</div></header>`;
+function go(v){view=v;render();window.scrollTo(0,0)}
+function render(){({home,edit,solve,result,watch}[view])()}
+
+function home(){
+ $.innerHTML=head('امتحاناتي','أنشئ امتحانات، شاركها كملف txt، أو استورد امتحانات غيرك')+
+ `<div class="row" style="margin-bottom:18px"><button class="btn p" onclick="newExam()">${ic('plus')}امتحان جديد</button><button class="btn" onclick="importDlg()">${ic('up')}استيراد من txt</button>${exams.length?`<span class="sp"></span><button class="btn" onclick="exportDlg(exams,'كل-الامتحانات')">${ic('down')}تصدير الكل</button>`:''}</div>`+
+ (exams.length?exams.map((e,i)=>`<div class="card"><h2>${esc(e.title)}</h2><span class="tag">${e.q.length} سؤال</span><div class="row" style="margin-top:14px"><button class="btn p s" onclick="start(${i})">${ic('play')}ابدأ الحل</button><button class="btn s" onclick="editExam(${i})">${ic('edit')}تعديل</button><button class="btn s" onclick="exportDlg([exams[${i}]],exams[${i}].title)">${ic('down')}تصدير</button><span class="sp"></span><button class="btn s d" onclick="delExam(${i})" aria-label="حذف">${ic('trash')}</button></div></div>`).join('')
+ :`<div class="empty"><div class="logo">${ic('book')}</div><h2>لا توجد امتحانات بعد</h2><p>ابدأ بإنشاء امتحان جديد، أو استورد ملف txt يحتوي على امتحانات.</p></div>`);
+}
+function newExam(){D={id:uid(),title:'',q:[blankQ()]};D.isNew=1;go('edit')}
+function blankQ(){return{t:'',c:['',''],a:0,x:''}}
+function editExam(i){D=JSON.parse(JSON.stringify(exams[i]));D.idx=i;go('edit')}
+function delExam(i){if(confirm('حذف هذا الامتحان؟')){exams.splice(i,1);persist();render()}}
+
+function edit(){
+ $.innerHTML=head(D.isNew?'امتحان جديد':'تعديل الامتحان','',1)+
+ `<div class="card"><label class="lbl" style="margin-top:0">عنوان الامتحان</label><input type="text" value="${esc(D.title)}" oninput="D.title=this.value" placeholder="مثال: اختبار الفيزياء – الوحدة الأولى"></div>`+
+ D.q.map((q,qi)=>`<div class="card"><div class="q-h"><span class="num">${qi+1}</span><span class="sp"></span>${D.q.length>1?`<button class="btn s d" onclick="D.q.splice(${qi},1);render()" aria-label="حذف السؤال">${ic('trash')}</button>`:''}</div>
+ <label class="lbl" style="margin-top:0">نص السؤال</label><textarea oninput="D.q[${qi}].t=this.value">${esc(q.t)}</textarea>
+ <label class="lbl">الاختيارات (حدّد الإجابة الصحيحة)</label>
+ ${q.c.map((c,ci)=>`<div class="ch"><input type="radio" name="r${qi}" ${q.a===ci?'checked':''} onchange="D.q[${qi}].a=${ci}" aria-label="الإجابة الصحيحة"><input type="text" value="${esc(c)}" oninput="D.q[${qi}].c[${ci}]=this.value" placeholder="الاختيار ${ci+1}">${q.c.length>2?`<button class="btn s" onclick="rmC(${qi},${ci})" aria-label="حذف الاختيار">${ic('x')}</button>`:''}</div>`).join('')}
+ <button class="btn s" style="margin-top:10px" onclick="D.q[${qi}].c.push('');render()">${ic('plus')}إضافة اختيار</button>
+ <label class="lbl">شرح الإجابة (اختياري)</label><textarea oninput="D.q[${qi}].x=this.value" placeholder="يظهر بعد انتهاء الحل">${esc(q.x)}</textarea></div>`).join('')+
+ `<div class="row"><button class="btn" onclick="D.q.push(blankQ());render()">${ic('plus')}إضافة سؤال</button><span class="sp"></span><button class="btn p" onclick="saveExam()">${ic('check')}حفظ الامتحان</button></div>`;
+}
+function rmC(qi,ci){const q=D.q[qi];q.c.splice(ci,1);if(q.a===ci)q.a=0;else if(q.a>ci)q.a--;render()}
+function saveExam(){
+ if(!D.title.trim())return toast('اكتب عنوان الامتحان');
+ for(let i=0;i<D.q.length;i++){const q=D.q[i];
+  if(!q.t.trim())return toast('اكتب نص السؤال '+(i+1));
+  if(q.c.some(c=>!c.trim()))return toast('املأ كل اختيارات السؤال '+(i+1)+' أو احذف الفارغ');}
+ const e={id:D.id,title:D.title.trim(),q:D.q.map(q=>({t:q.t.trim(),c:q.c.map(c=>c.trim()),a:q.a,x:q.x.trim()}))};
+ if(D.idx!=null)exams[D.idx]=e;else exams.push(e);
+ persist();toast('تم حفظ الامتحان');go('home');
+}
+
+function start(i){S={e:exams[i],ans:new Array(exams[i].q.length).fill(-1)};go('solve')}
+function solve(){
+ const done=S.ans.filter(a=>a>=0).length,n=S.e.q.length;
+ $.innerHTML=head(esc(S.e.title),`${done} من ${n} تمت الإجابة`,1)+`<div class="bar"><i style="width:${done/n*100}%"></i></div>`+
+ S.e.q.map((q,qi)=>`<div class="card"><div class="q-h"><span class="num">${qi+1}</span><b>${esc(q.t).replace(/\n/g,'<br>')}</b></div>${q.c.map((c,ci)=>`<button class="opt ${S.ans[qi]===ci?'sel':''}" onclick="S.ans[${qi}]=${ci};solve()"><span class="dot">${S.ans[qi]===ci?ic('check'):''}</span>${esc(c)}</button>`).join('')}</div>`).join('')+
+ `<button class="btn p" onclick="finish()">${ic('check')}إنهاء وعرض النتيجة</button>`;
+}
+function finish(){
+ const un=S.ans.filter(a=>a<0).length;
+ if(un&&!confirm(`بقي ${un} سؤال بدون إجابة. هل تريد الإنهاء؟`))return;
+ go('result');
+}
+function result(){
+ const n=S.e.q.length,r=S.e.q.filter((q,i)=>S.ans[i]===q.a).length,p=Math.round(r/n*100),C=2*Math.PI*52;
+ $.innerHTML=head('النتيجة',esc(S.e.title),1)+
+ `<div class="card score"><div class="ring"><svg viewBox="0 0 120 120" width="120" height="120"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--line)" stroke-width="10"/><circle cx="60" cy="60" r="52" fill="none" stroke="${p>=50?'var(--ok)':'var(--no)'}" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C*p/100} ${C}" transform="rotate(-90 60 60)"/></svg><span>${p}%</span></div><div><h2>${r} من ${n} إجابة صحيحة</h2><p class="sub">${p>=85?'أداء ممتاز':p>=50?'أداء جيد، راجع الأخطاء':'تحتاج إلى مراجعة أكثر'}</p></div></div>`+
+ S.e.q.map((q,qi)=>{const a=S.ans[qi];return `<div class="card"><div class="q-h"><span class="num">${qi+1}</span><b>${esc(q.t).replace(/\n/g,'<br>')}</b></div>${q.c.map((c,ci)=>{const k=ci===q.a?'ok':(ci===a?'no':'');return `<div class="opt ${k}"><span class="dot">${k==='ok'?ic('check'):k==='no'?ic('x'):''}</span>${esc(c)}</div>`}).join('')}${a<0?'<p class="sub" style="margin-top:10px">لم تجب على هذا السؤال</p>':''}${q.x?`<div class="expl"><b>الشرح:</b> ${esc(q.x).replace(/\n/g,'<br>')}</div>`:''}</div>`}).join('')+
+ `<div class="row"><button class="btn p" onclick="S.ans.fill(-1);go('solve')">${ic('play')}إعادة الحل</button><button class="btn" onclick="go('home')">الرئيسية</button></div>`;
+}
+
+function modal(h){const b=document.createElement('div');b.className='bd';b.onclick=e=>{if(e.target===b)b.remove()};b.innerHTML=`<div class="md" role="dialog">${h}</div>`;document.body.appendChild(b);return b}
+function exportDlg(list,name){
+ const txt=JSON.stringify({format:'exams-v1',exams:list.map(e=>({title:e.title,q:e.q}))},null,1);
+ const b=modal(`<h2>تصدير الامتحانات</h2><p class="sub">${list.length} امتحان – احفظ الملف وشاركه مع من تريد.</p><textarea readonly style="min-height:160px;margin:12px 0" id="xt"></textarea><div class="row"><button class="btn p" id="sv">${ic('down')}حفظ كملف txt</button><button class="btn" id="cp">${ic('copy')}نسخ النص</button><span class="sp"></span><button class="btn" onclick="this.closest('.bd').remove()">إغلاق</button></div>`);
+ b.querySelector('#xt').value=txt;
+ b.querySelector('#cp').onclick=async()=>{try{await navigator.clipboard.writeText(txt);toast('تم النسخ')}catch(e){b.querySelector('#xt').select();toast('حدّد النص وانسخه يدويًا')}};
+ b.querySelector('#sv').onclick=async()=>{
+  try{const d=window.claude&&await claude.use('downloads');if(d){await d.save({filename:name.replace(/[\\/:*?"<>|]/g,'')+'.txt',data:txt});return}}catch(e){if(e&&e.code==='declined')return}
+  toast('الحفظ غير متاح هنا، استخدم نسخ النص')};
+}
+function importDlg(){
+ const b=modal(`<h2>استيراد امتحانات</h2><p class="sub">اختر ملف txt تم تصديره من هذا الموقع، أو الصق محتواه.</p><input type="file" accept=".txt,text/plain" id="fi" style="margin:12px 0;width:100%"><textarea id="it" style="min-height:140px" placeholder="أو الصق النص هنا"></textarea><div class="row" style="margin-top:12px"><button class="btn p" id="go">${ic('up')}استيراد</button><span class="sp"></span><button class="btn" onclick="this.closest('.bd').remove()">إلغاء</button></div>`);
+ b.querySelector('#fi').onchange=async e=>{const f=e.target.files[0];if(f)b.querySelector('#it').value=await f.text()};
+ b.querySelector('#go').onclick=()=>{
+  try{const d=JSON.parse(b.querySelector('#it').value);
+   const L=(d.exams||[]).filter(e=>e&&e.title&&Array.isArray(e.q)).map(e=>({id:uid(),title:String(e.title),q:e.q.filter(q=>q&&q.t&&Array.isArray(q.c)&&q.c.length>1).map(q=>({t:String(q.t),c:q.c.map(String),a:Number.isInteger(q.a)&&q.a>=0&&q.a<q.c.length?q.a:0,x:String(q.x||'')}))})).filter(e=>e.q.length);
+   if(!L.length)throw 0;
+   exams.push(...L);persist();b.remove();render();toast(`تم استيراد ${L.length} امتحان`);
+  }catch(e){toast('الملف غير صالح')}};
+}
+try{lectures=JSON.parse(localStorage.getItem('lectures-v1')||'[]');if(!Array.isArray(lectures))lectures=[]}catch(e){lectures=[]}
+P.vid='<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/>';P.link='<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3A4 4 0 0010 18.7l1-1"/>';
+function ytId(u){try{const x=new URL(u),h=x.hostname.replace('www.','');if(h==='youtu.be')return x.pathname.slice(1).split('/')[0];if(h.endsWith('youtube.com')){if(x.searchParams.get('v'))return x.searchParams.get('v');const m=x.pathname.match(/^\/(embed|shorts|live)\/([\w-]+)/);if(m)return m[2]}}catch(e){}return null}
+const host=u=>{try{return new URL(u).hostname.replace('www.','')}catch(e){return u}};
+const okUrl=u=>/^https?:\/\//i.test(u);
+function expSec(){tab==='lec'?exportDlg({lectures,exams:[]},'المحاضرات'):exportDlg({exams,lectures:[]},'الامتحانات')}
+function expAll(){exportDlg({exams,lectures},'محاضرات-وامتحانات')}
+function home(){
+ const L=tab==='lec',n=L?lectures.length:exams.length;
+ $.innerHTML=head('منصتي التعليمية','محاضرات وامتحانات، وشاركها كملف txt')+
+ `<div class="tabs"><button class="${L?'on':''}" onclick="tab='lec';home()">${ic('vid')}المحاضرات (${lectures.length})</button><button class="${L?'':'on'}" onclick="tab='ex';home()">${ic('book')}الامتحانات (${exams.length})</button></div>`+
+ `<div class="row" style="margin-bottom:18px">${L?`<button class="btn p" onclick="lecDlg()">${ic('plus')}محاضرة جديدة</button>`:`<button class="btn p" onclick="newExam()">${ic('plus')}امتحان جديد</button>`}<button class="btn" onclick="importDlg()">${ic('up')}استيراد txt</button></div>`+
+ (lectures.length+exams.length?`<div class="row" style="margin-bottom:18px">${n?`<button class="btn s" onclick="expSec()">${ic('down')}تصدير ${L?'كل المحاضرات':'كل الامتحانات'}</button>`:''}<button class="btn s" onclick="expAll()">${ic('down')}تصدير الكل (محاضرات + امتحانات)</button></div>`:'')+
+ (!n?`<div class="empty"><div class="logo">${ic(L?'vid':'book')}</div><h2>${L?'لا توجد محاضرات بعد':'لا توجد امتحانات بعد'}</h2><p>${L?'أضف رابط محاضرة من يوتيوب أو أي موقع، أو استورد ملف txt.':'أنشئ امتحانًا جديدًا، أو استورد ملف txt.'}</p></div>`:
+ L?lectures.map((l,i)=>`<div class="card"><h2>${esc(l.title)}</h2><span class="tag">${ic('link')}${esc(host(l.url))}${ytId(l.url)?' – يوتيوب':''}</span><div class="row" style="margin-top:14px"><button class="btn p s" onclick="openLec(${i})">${ic('play')}مشاهدة</button><button class="btn s" onclick="lecDlg(${i})">${ic('edit')}تعديل</button><button class="btn s" onclick="exportDlg({lectures:[lectures[${i}]],exams:[]},lectures[${i}].title)">${ic('down')}تصدير</button><span class="sp"></span><button class="btn s d" onclick="delLec(${i})" aria-label="حذف">${ic('trash')}</button></div></div>`).join(''):
+ exams.map((e,i)=>`<div class="card"><h2>${esc(e.title)}</h2><span class="tag">${e.q.length} سؤال</span><div class="row" style="margin-top:14px"><button class="btn p s" onclick="start(${i})">${ic('play')}ابدأ الحل</button><button class="btn s" onclick="editExam(${i})">${ic('edit')}تعديل</button><button class="btn s" onclick="exportDlg([exams[${i}]],exams[${i}].title)">${ic('down')}تصدير</button><span class="sp"></span><button class="btn s d" onclick="delExam(${i})" aria-label="حذف">${ic('trash')}</button></div></div>`).join(''));
+}
+function delLec(i){if(confirm('حذف هذه المحاضرة؟')){lectures.splice(i,1);persist();home()}}
+function openLec(i){W=lectures[i];go('watch')}
+function watch(){const id=ytId(W.url);
+ $.innerHTML=head(esc(W.title),esc(host(W.url)),1)+(id?`<div class="vid"><iframe src="https://www.youtube.com/embed/${encodeURIComponent(id)}?playsinline=1&rel=0" title="${esc(W.title)}" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="sub" style="margin-top:10px">لو ظهر خطأ في المشغّل، افتح الفيديو على يوتيوب بالزرار تحت.</p>`:`<div class="card"><p>أغلب المواقع لا تسمح بعرضها داخل صفحة أخرى، لذلك افتح المحاضرة في تبويب جديد.</p></div>`)+`<div class="row" style="margin-top:14px"><a class="btn p" href="${esc(W.url)}" target="_blank" rel="noopener noreferrer">${ic('link')}${id?'فتح على يوتيوب':'فتح الرابط الأصلي'}</a></div>`}
+function lecDlg(i){const l=i==null?{title:'',url:''}:lectures[i];
+ const b=modal(`<h2>${i==null?'محاضرة جديدة':'تعديل المحاضرة'}</h2><label class="lbl">عنوان المحاضرة</label><input type="text" id="lt"><label class="lbl">رابط المحاضرة (يوتيوب أو أي موقع)</label><input type="text" id="lu" dir="ltr" placeholder="https://"><div class="row" style="margin-top:16px"><button class="btn p" id="ls">${ic('check')}حفظ</button><span class="sp"></span><button class="btn" onclick="this.closest('.bd').remove()">إلغاء</button></div>`);
+ b.querySelector('#lt').value=l.title;b.querySelector('#lu').value=l.url;
+ b.querySelector('#ls').onclick=()=>{const t=b.querySelector('#lt').value.trim();let u=b.querySelector('#lu').value.trim();
+  if(!t)return toast('اكتب عنوان المحاضرة');
+  if(u&&!okUrl(u))u='https://'+u;
+  try{new URL(u)}catch(e){return toast('الرابط غير صالح')}
+  if(i==null)lectures.push({id:uid(),title:t,url:u});else lectures[i]={...lectures[i],title:t,url:u};
+  persist();b.remove();home()}}
+function exportDlg(x,name){
+ const o=Array.isArray(x)?{exams:x,lectures:[]}:x,E=o.exams||[],Lc=o.lectures||[];
+ const txt=JSON.stringify({format:'exams-v1',exams:E.map(e=>({title:e.title,q:e.q})),lectures:Lc.map(l=>({title:l.title,url:l.url}))},null,1);
+ const b=modal(`<h2>تصدير</h2><p class="sub">${Lc.length} محاضرة و${E.length} امتحان – احفظ الملف وشاركه مع من تريد.</p><textarea readonly style="min-height:160px;margin:12px 0" id="xt"></textarea><div class="row"><button class="btn p" id="sv">${ic('down')}حفظ كملف txt</button><button class="btn" id="cp">${ic('copy')}نسخ النص</button><span class="sp"></span><button class="btn" onclick="this.closest('.bd').remove()">إغلاق</button></div>`);
+ b.querySelector('#xt').value=txt;
+ b.querySelector('#cp').onclick=async()=>{try{await navigator.clipboard.writeText(txt);toast('تم النسخ')}catch(e){b.querySelector('#xt').select();toast('حدّد النص وانسخه يدويًا')}};
+ b.querySelector('#sv').onclick=async()=>{
+  try{const d=window.claude&&await claude.use('downloads');if(d){await d.save({filename:name.replace(/[\\/:*?"<>|]/g,'')+'.txt',data:txt});return}}catch(e){if(e&&e.code==='declined')return}
+  toast('الحفظ غير متاح هنا، استخدم نسخ النص')};
+}
+function importDlg(){
+ const b=modal(`<h2>استيراد</h2><p class="sub">اختر ملف txt تم تصديره من هذا الموقع، أو الصق محتواه.</p><input type="file" accept=".txt,text/plain" id="fi" style="margin:12px 0;width:100%"><textarea id="it" style="min-height:140px" placeholder="أو الصق النص هنا"></textarea><div class="row" style="margin-top:12px"><button class="btn p" id="go">${ic('up')}استيراد</button><span class="sp"></span><button class="btn" onclick="this.closest('.bd').remove()">إلغاء</button></div>`);
+ b.querySelector('#fi').onchange=async e=>{const f=e.target.files[0];if(f)b.querySelector('#it').value=await f.text()};
+ b.querySelector('#go').onclick=()=>{
+  try{const d=JSON.parse(b.querySelector('#it').value);
+   const X=(d.exams||[]).filter(e=>e&&e.title&&Array.isArray(e.q)).map(e=>({id:uid(),title:String(e.title),q:e.q.filter(q=>q&&q.t&&Array.isArray(q.c)&&q.c.length>1).map(q=>({t:String(q.t),c:q.c.map(String),a:Number.isInteger(q.a)&&q.a>=0&&q.a<q.c.length?q.a:0,x:String(q.x||'')}))})).filter(e=>e.q.length);
+   const Y=(d.lectures||[]).filter(l=>l&&l.title&&okUrl(String(l.url||''))).map(l=>({id:uid(),title:String(l.title),url:String(l.url)}));
+   if(!X.length&&!Y.length)throw 0;
+   exams.push(...X);lectures.push(...Y);tab=Y.length?'lec':'ex';persist();b.remove();render();toast(`تم استيراد ${Y.length} محاضرة و${X.length} امتحان`);
+  }catch(e){toast('الملف غير صالح')}};
+}
+function welcome(){const b=modal(`<div class="logo" style="margin-bottom:12px">${ic('book')}</div><h2>أهلًا بك</h2><p class="sub">عندك ملف txt فيه محاضرات أو امتحانات؟ استورده الآن، أو تخطَّ وابدأ من صفحة فاضية.</p><div class="row" style="margin-top:16px"><button class="btn p" id="wi">${ic('up')}استيراد ملف txt</button><button class="btn" onclick="this.closest('.bd').remove()">تخطي</button></div>`);b.querySelector('#wi').onclick=()=>{b.remove();importDlg()}}
+render();
+try{if(!localStorage.getItem('seen-v1')){localStorage.setItem('seen-v1','1');welcome()}}catch(e){}
+</script>
+</body>
+</html>
